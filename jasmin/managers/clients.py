@@ -242,7 +242,7 @@ class SMPPClientManagerPB(pb.Avatar):
             defer.returnValue(False)
 
         # Fix prefetch limit per consumer to 1 to get correct throttling
-        yield self.amqpBroker.chan.basic_qos(prefetch_count=1)
+        yield self.amqpBroker.chan.basic_qos(prefetch_count=200)
 
         # Declare queues
         # First declare the messaging exchange (has no effect if its already declared)
